@@ -9,6 +9,7 @@ public class Subt {
 		int a=10;
 		int b=20;
 		System.out.println("Subtraction of " +(b-a));
+		System.out.println("Addition of " +(a+b));
 
 
 	}
