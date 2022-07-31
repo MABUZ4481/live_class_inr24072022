@@ -8,7 +8,7 @@ public class Subt {
 		
 		int a=10;
 		int b=20;
-		System.out.println(b-a);
+		System.out.println("Subtraction of " +(b-a));
 
 
 	}
