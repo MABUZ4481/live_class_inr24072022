@@ -1,6 +1,6 @@
 package LiveClass;
 
-public class SumInt {
+public class SumInt { 
 
 	
 
