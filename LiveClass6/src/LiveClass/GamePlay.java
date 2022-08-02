@@ -82,6 +82,7 @@ public class GamePlay {
 
 		Umpire task=new Umpire();
 		task.umpireDecision();
+		System.out.println("Game is over now");
 	}
 
 }
