@@ -1,76 +1,87 @@
 package LiveClass;
 
-import java.util.*;
+import java.util.Scanner;
 
-class GuesserGuess{
+class GuesserGues{
 	
-	int guesserNumber;
-	
-	
-	public int guesserNum() {
-		Scanner sc=new Scanner(System.in);
-	guesserNumber = sc.nextInt();
-	System.out.println("Hi Guesser ! Please Guess any Number");
-	guesserNumber=sc.nextInt();	
-	return guesserNumber;
-	
-	}	
+	int guesserKey;
+	Scanner sc=new Scanner(System.in);
+	public int guesserNumber(){
+		
+		System.out.println("Hi! Please Guesser, First guess Your Number");
+		guesserKey=sc.nextInt();	
+		return guesserKey;
+	}
 }
-class PlayersGuess{
+
+
+class PlayerGuess{
+	int playersNum;
+	Scanner sc=new Scanner(System.in);
 	
-	int playerNum,scndPlayerNum1,thdPlayerGuess;
+ public int	PlayerNumber(){
 	
-	
-	
-	public int playerGuess() {
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Hi Player ! Please Guess any Number -1");
-		playerNum=sc.nextInt();		
-		return playerNum;
+	 System.out.println("Hi! Players Please Guess your Number");
+	 playersNum =sc.nextInt();
+	 return playersNum;
 	}
 	
-
 }
 
-class UmpireDecision{
-	
+class Umpire{
+
 	int keyValue;
-	int f1Player, f2Player,f3Player;
-	public void umpireTask() {
-		//System.out.println(" Hi all ! Welcome, Play now");
-	GuesserGuess gsr=new GuesserGuess();
-	//gsr.guesserNum();
-	keyValue=gsr.guesserNumber;
-	PlayersGuess pgs=new PlayersGuess();
-	//pgs.playerGuess();
+	int firstPlayer,secondPlayer,thirdPlayer;
+	GuesserGues guesserKey=new GuesserGues();
 	
-	if(keyValue==pgs.playerNum) {
-		
-		System.out.println("Weldone Player-I ! You won the Game " );
-	}
-	else if (keyValue==pgs.scndPlayerNum1) {
-		
-		System.out.println("Weldone Player-II ! You won the Game " );
-	}
-	else if(keyValue==pgs.thdPlayerGuess) {
-		
-		System.out.println("Weldone Player-III ! You won the Game");
-	}
-	System.out.println("Oh!!! All lost the Game");
-	}
+	PlayerGuess player1=new PlayerGuess();
+	PlayerGuess player2=new PlayerGuess();
+	PlayerGuess player3=new PlayerGuess();
 	
+    public void	umpireDecision(){
+    	
+		 keyValue=guesserKey.guesserNumber();
+		 //System.out.println(keyValue);
+		 
+		 firstPlayer=player1.PlayerNumber();
+		 secondPlayer=player2.PlayerNumber();
+		 thirdPlayer=player3.PlayerNumber();
+		 
+		 if(keyValue==firstPlayer && keyValue==thirdPlayer) {
+			 if(keyValue==secondPlayer)
+			 System.out.println("Match Tie");
+			 
+		 }
+		 	else if(keyValue==firstPlayer) {
+			 
+			 System.out.println("Player-1 won the Match");
+			 
+		 }
+		 
+		 else if(keyValue==secondPlayer) {
+			 
+			 System.out.println("Player-11 won the Match");
+			 
+		 }
+		 else if( keyValue==thirdPlayer) {
+			 System.out.println("Player-111 won the Match");
+		 }
+		 else {
+			 System.out.println("No one won the Match");
+			// System.out.println("Player-11I won the Match");
+		 }	 
+	}
+      		 
 }
+	
 
 public class GamePlay {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(" Hi all ! Welcome in Number  Guess Game");
-		GuesserGuess gs=new GuesserGuess();
-		gs.guesserNum();
-		PlayersGuess pgs=new PlayersGuess();
-		pgs.playerGuess();
-		UmpireDecision umpire = new UmpireDecision();
-		umpire.umpireTask();
+
+		Umpire task=new Umpire();
+		task.umpireDecision();
 	}
+
 }
