@@ -4,34 +4,47 @@ import java.util.Scanner;
 
 class GuesserGues{
 	
-	int guesserKey;
+	double guesserKey;
 	Scanner sc=new Scanner(System.in);
-	public int guesserNumber(){
+	public double guesserNumber(){
 		
-		System.out.println("Hi! Please Guesser, First guess Your Number");
-		guesserKey=sc.nextInt();	
+				
+	 guesserKey=sc.nextDouble();
+		
+		if(guesserKey%1!=0) {
+			System.out.println("Decimal Number is not Allowed. Please Guess the Integere Number Only");
+			guesserNumber();			
+		}
+		else {
+		return guesserKey;
+		}
 		return guesserKey;
 	}
 }
 
-
 class PlayerGuess{
-	int playersNum;
+	double playersNum;
 	Scanner sc=new Scanner(System.in);
 	
- public int	PlayerNumber(){
+     public double	playerNumber(){
 	
-	 System.out.println("Hi! Players Please Guess your Number");
-	 playersNum =sc.nextInt();
+	 System.out.println("Hi! Players now please Guess your Number");
+	 playersNum =sc.nextDouble();
+	 if(playersNum%1!=0) {
+		 
+		 System.out.println("Please Guess only Inter Number");
+		 playerNumber();
+	 }else {
+	 return playersNum;
+	 }
 	 return playersNum;
 	}
-	
+     	
 }
-
 class Umpire{
 
 	int keyValue;
-	int firstPlayer,secondPlayer,thirdPlayer;
+	double firstPlayer,secondPlayer,thirdPlayer;
 	GuesserGues guesserKey=new GuesserGues();
 	
 	PlayerGuess player1=new PlayerGuess();
@@ -40,12 +53,12 @@ class Umpire{
 	
     public void	umpireDecision(){
     	
-		 keyValue=guesserKey.guesserNumber();
+		 keyValue=(int) guesserKey.guesserNumber();
 		 //System.out.println(keyValue);
 		 
-		 firstPlayer=player1.PlayerNumber();
-		 secondPlayer=player2.PlayerNumber();
-		 thirdPlayer=player3.PlayerNumber();
+		 firstPlayer=player1.playerNumber();
+		 secondPlayer=player2.playerNumber();
+		 thirdPlayer=player3.playerNumber();
 		 
 		 if(keyValue==firstPlayer && keyValue==thirdPlayer) {
 			 if(keyValue==secondPlayer)
@@ -67,22 +80,43 @@ class Umpire{
 			 System.out.println("Player-111 won the Match");
 		 }
 		 else {
-			 System.out.println("No one won the Match");
+			 System.out.println("No one could guess the correct Number");
 			// System.out.println("Player-11I won the Match");
 		 }	 
 	}
       		 
 }
+class participants{
 	
+	int players;
+	public int totalPlayers() {
+	
+	Scanner sc=new Scanner(System.in);
+	players=sc.nextInt();
+	if(players>5) {
+		System.out.println("Please enter valid input! Maximum 5 Participants can Playe at Time");
+		totalPlayers();
+	}else {
+		System.out.println("Plaers Number "+players);
+		return players;
+	}
+	
+	return players;
+	}
+	
+}	
 
 public class GamePlay {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+        participants pts=new participants();
+        System.out.println("Umpire! Please Enter the number of Participants");
+        pts.totalPlayers();
+		System.out.println("Hi! Please Guesser, First guess Your Number");	
 		Umpire task=new Umpire();
 		task.umpireDecision();
-		System.out.println("Game is over now");
 	}
 
 }
+
