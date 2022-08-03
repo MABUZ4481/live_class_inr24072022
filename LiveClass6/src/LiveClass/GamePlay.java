@@ -2,6 +2,28 @@ package LiveClass;
 
 import java.util.Scanner;
 
+
+
+class participants{
+	
+	int players;
+	public int totalPlayers() {
+	
+	Scanner sc=new Scanner(System.in);
+	players=sc.nextInt();
+	if(players>5) {
+		System.out.println("Please enter valid input! Maximum 5 Participants can Playe at Time");
+		totalPlayers();
+	}else {
+		System.out.println("Plaers Number "+players);
+		return players;
+	}
+	
+	return players;
+	}
+	
+}
+
 class GuesserGues{
 	
 	double guesserKey;
@@ -12,8 +34,9 @@ class GuesserGues{
 	 guesserKey=sc.nextDouble();
 		
 		if(guesserKey%1!=0) {
-			System.out.println("Decimal Number is not Allowed. Please Guess the Integere Number Only");
-			guesserNumber();			
+			System.out.println("Decimal Number is not Allowed. Please Enter the Integere Number Only");
+			guesserNumber();
+			
 		}
 		else {
 		return guesserKey;
@@ -28,7 +51,7 @@ class PlayerGuess{
 	
      public double	playerNumber(){
 	
-	 System.out.println("Hi! Players now please Guess your Number");
+	 System.out.println("Hi! Players Please Guess your Number");
 	 playersNum =sc.nextDouble();
 	 if(playersNum%1!=0) {
 		 
@@ -39,7 +62,8 @@ class PlayerGuess{
 	 }
 	 return playersNum;
 	}
-     	
+     
+	
 }
 class Umpire{
 
@@ -80,43 +104,24 @@ class Umpire{
 			 System.out.println("Player-111 won the Match");
 		 }
 		 else {
-			 System.out.println("No one could guess the correct Number");
+			 System.out.println("No one won the Match");
 			// System.out.println("Player-11I won the Match");
 		 }	 
 	}
       		 
 }
-class participants{
 	
-	int players;
-	public int totalPlayers() {
-	
-	Scanner sc=new Scanner(System.in);
-	players=sc.nextInt();
-	if(players>5) {
-		System.out.println("Please enter valid input! Maximum 5 Participants can Playe at Time");
-		totalPlayers();
-	}else {
-		System.out.println("Plaers Number "+players);
-		return players;
-	}
-	
-	return players;
-	}
-	
-}	
 
 public class GamePlay {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        participants pts=new participants();
-        System.out.println("Umpire! Please Enter the number of Participants");
-        pts.totalPlayers();
+		  participants pts=new participants();
+		  System.out.println("Please enter the No. of Participants");
+	        pts.totalPlayers();
 		System.out.println("Hi! Please Guesser, First guess Your Number");	
 		Umpire task=new Umpire();
 		task.umpireDecision();
 	}
 
 }
-
