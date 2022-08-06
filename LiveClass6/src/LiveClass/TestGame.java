@@ -3,95 +3,123 @@ package LiveClass;
 
 import java.util.Scanner;
 
-class Parts{
-	
+//import java.util.Scanner;
+
+
+
+class GuesserGues1 {
+
+	double guesserKey;
+	Scanner sc = new Scanner(System.in);
+
+	public double guesserNumber() {
+
+		guesserKey = sc.nextDouble();
+
+		if (guesserKey % 1 != 0) {
+			System.out.println("Decimal Number is not Allowed. Please Enter the Integere Number Only");
+			guesserNumber();
+
+		} else {
+			return guesserKey;
+		}
+		return guesserKey;
+	}
+}
+
+class Parts {
+
 	int x;
-	Scanner sc=new Scanner(System.in);
-	public int totalx(){
-		
-		x=sc.nextInt();
-		if(x>5) {
-		System.out.println("No. of Participants not allowed above 5");
-		totalx();
-	    }
-		else 
-		{
-			System.out.println("No. of Participants is " +x);
+	Scanner sc = new Scanner(System.in);
+
+	public int totalx() {
+		//System.out.println("Participants Please enter the number");
+		x = sc.nextInt();
+		if (x > 5) {
+			System.out.println("No. of Participants not allowed above 5");
+			totalx();
+		} else {
+			System.out.println("No. of Participants is " + x);
 			return x;
 		}
 		return x;
 	}
 }
-class GuesserGues{
-	
-	double guesserKey;
-	Scanner sc=new Scanner(System.in);
-	public double guesserNumber(){
-		
-				
-	 guesserKey=sc.nextDouble();
-		
-		if(guesserKey%1!=0) {
-			System.out.println("Decimal Number is not Allowed. Please Enter the Integere Number Only");
-			guesserNumber();
-			
-		}
-		else {
-		return guesserKey;
-		}
-		return guesserKey;
-	}
-}
 
- class Players{
+
+class Players {
 	
-	public double[] countPlayers(int xt){
+	int i;
+	int r = 0;
+	Parts pt = new Parts();
+	int k = pt.totalx();
+	int[] arr = new int[k];
+	public int[] countPlayers() {
 		
-		Scanner sc=new Scanner(System.in);
 		
-		double [] arr= new double[xt];
-		for(int i=0;i<arr.length;i++) {
+		Scanner sc = new Scanner(System.in);
+		
+		//int[] arr = new int[k];
+		System.out.println("Array Length: " + arr.length);
+		System.out.println("Player Please guess your number");
+		for (i = r; i < arr.length; i++) {
 			
-			//System.out.println("Please Enter Number " );
-			arr[i]=sc.nextDouble();
-			if(arr[i]%1!=0) {
+			double x = sc.nextDouble();
+
+			//r = i;
+			if (x % 1 != 0) {
 				System.out.println("Decimal number is not allowed. Please re-enter");
-				countPlayers(xt);
+				r = i;
+				countPlayers();
+
+			} else {
+				
+				arr[i] = (int) x;
+				System.out.println("Next Please Guess Number  ");
+//				for (int j = r; j <= r; j++) {
+//					
+//				System.out.println("Player input " + (int) x);
+//
+//				arr[i] = (int) x;
+//				System.out.println("aar at: [" + i + "] = " + arr[i]);
+//				System.out.println("Next Please Guess Number  ");
+//				
+//				}
 			}
-			else {
-			
-				System.out.println("Please Enter Number next " );
-			}
-			
+			//return arr;
 		}
-		
-          for(int j=0;j<arr.length;j++) {
-			
-			System.out.println("Player-"+(j+1)+": " +(int)arr[j]);
-			
-		}
-          return arr;
+
+//}
+
+		return arr;
+
 	}
-		
-		
-}
- 
-
-
-class TestGame{
 	
+	public void printPlayArray() {
+	
+		
+		int []show=countPlayers();
+		System.out.println("------------- Printing Array =1 --------------------");
+		for (int j = 0; j <show.length; j++) {
+			
+			System.out.println("Player input at: [" + j + "] = " +show[j] );	
+	}
+
+}
+
+}
+class TestGame {
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+	// TODO Auto-generated method stub
 		System.out.println("Please enter the number of participants");
-		Parts pt=new Parts();
-		int k=pt.totalx();
-		GuesserGues gnum=new GuesserGues();
-		System.out.println("Guesser Please enter the number");
-		gnum.guesserNumber();
-		Players pn=new Players();
-		//int k=pt.totalx();
-		System.out.println("Participants Please enter the number");
-		pn.countPlayers(k);
-		System.exit(0);
+		//Parts pt = new Parts();
+		//int k = pt.totalx();
+	
+		Players pn = new Players();
+		
+		pn.printPlayArray();
+		
 	}
 }
