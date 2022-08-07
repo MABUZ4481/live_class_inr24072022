@@ -38,20 +38,21 @@ class GuesserNumber {
 
 class TotalPlayer{
 
-	int count;
+	int countPlayer=0;
 	Scanner sc = new Scanner(System.in);
 
 	public int countParticipants() {
 		//System.out.println("Participants Please enter the number");
-	int	count = sc.nextInt();
-		if (count > 5) {
-			System.out.println("No. of Participants not allowed above 5");
+		countPlayer = sc.nextInt();
+		if (countPlayer > 5) {
+			System.out.println("No. of Participants above 5 is not allowed, Please Re-enter");
 			countParticipants();
+			
 		} else {
-			System.out.println("No. of Participants is " + count);
-			return count;
+			System.out.println("No. of Participants is " + countPlayer);
+			return countPlayer;
 		}
-		return count;
+		return countPlayer;
 	}
 	
 }
@@ -169,7 +170,7 @@ class UmpireTask{
 						continue;
 					}
 					else {
-				System.out.println("Player "+result[j]+ " "+"has won the match" );
+				System.out.println("\nPlayer "+result[j]+ " "+"has won the match" );
 				}
 				}
 			}
