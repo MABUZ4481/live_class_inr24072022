@@ -192,7 +192,7 @@ class ReExecute {
         }
             
         else if (status.equals("no") || status.equals("NO")) {
-        	System.out.println("Thank you for playing fiar");
+        	System.out.println("Thank you for playing fair");
         	 System.exit(0);
         	
         }
