@@ -21,7 +21,16 @@ class GuesserNumber {
 			guesserKeyNum();
 
 		} else {
-			return guesserKey;
+			if(guesserKey>=10 && guesserKey!=0) {
+				{
+					System.out.println("Please enter the No. between 0 to  11 only");
+					guesserKeyNum();
+				}
+			}
+				else { 
+			       return guesserKey;
+			       
+			}
 		}
 		return guesserKey;
 	}
@@ -49,49 +58,51 @@ class TotalPlayer{
 
 
 class PlayersGuessNum {
-	
-
-	
+		
 	int i;
 	int r = 0;
 	
-
 	TotalPlayer pt = new TotalPlayer();
 	int n = pt.countParticipants();
 	
 	//int n=getCount();
 	int[] arr = new int[n];
-
-
 	
 	public int[] checkPlayersNum() {
 		
 		System.out.println("Arra: "+n);
 		Scanner sc = new Scanner(System.in);
 		
-		//int[] arr = new int[k];
 		System.out.println("Array Length: " + arr.length);
 		System.out.println("Player Please guess your number");
 		for (i = r; i < arr.length; i++) {
 			
-			double x = sc.nextDouble();
+			double num = sc.nextDouble();
 
-			
-			//r = i;
-			if (x % 1 != 0) {
+			if (num % 1 != 0) {
 				System.out.println("Decimal number is not allowed. Please re-enter");
 				r = i;
 				checkPlayersNum();
 
 			} else {
 				
-				arr[i] = (int) x;
-				System.out.println("Next Please Guess Number  ");
+				if(num>=10 && num!=0) {
+					{
+						System.out.println("Please enter the No. between 0 to  11 only");
+						checkPlayersNum();
+						
+					}
+				}
+					else { 
+						arr[i] = (int) num;
+						System.out.println("Next Please Guess Number  ");
 
+				}
+				
+				
 			}
 		
 		}
-
 
 		return arr;
 
@@ -124,9 +135,7 @@ class UmpireTask{
 		for(int i=0;i<playersNums.length;i++) {
 			 		 
 			if(playersNums[i]==guesserKey){
-				//count++;
-				//int [] winner = new int[i];
-				
+							
 				winner[i]=i+1;
 				count++;
 				//count=winner.length;
@@ -145,7 +154,7 @@ class UmpireTask{
 		
 		System.out.println("Check aaray: "+result.length+ " and Check Count: "+count);
 		
-          if (result.length==rest) {
+          if (result.length==count) {
 				
 				System.out.println("Match has been tied All guess the correct  number ");
 				System.exit(0); // are you want to play again
@@ -177,16 +186,16 @@ class TestGame {
 	public static void main(String[] args) {
 		
 	
-		System.out.println("To Start the Game, Please enter the number of participants");
-		TotalPlayer tp= new TotalPlayer();
-		int k=tp.countParticipants();
+	//	System.out.println("To Start the Game, Please first enter the number of participants");
+		//TotalPlayer tp= new TotalPlayer();
+		//int k=tp.countParticipants();
 	
-		System.out.println("Now, Guesser Please Gues Any Integer Number First");
+		System.out.println("To Start the Game, Guesser Please Gues Any Integer Number First");
 		
 		GuesserNumber guesserNum=new GuesserNumber();
 		int guesserKey=(int)guesserNum.guesserKeyNum();
 		System.out.println("Gueser Key is: "+guesserKey);
-		System.out.println("Please re-confirm no. of prticipants");
+		System.out.println("Please confirm no. of prticipants");
 		
 		
 		PlayersGuessNum playNum = new PlayersGuessNum();
