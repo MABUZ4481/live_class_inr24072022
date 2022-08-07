@@ -21,9 +21,9 @@ class GuesserNumber {
 			guesserKeyNum();
 
 		} else {
-			if(guesserKey>=10 && guesserKey!=0) {
+			if(guesserKey>=11 || guesserKey==0) {
 				{
-					System.out.println("Please enter the No. between 0 to  11 only");
+					System.out.println("Please enter the No. between 0 to  10 only");
 					guesserKeyNum();
 				}
 			}
@@ -70,32 +70,32 @@ class PlayersGuessNum {
 	
 	public int[] checkPlayersNum() {
 		
-		System.out.println("Arra: "+n);
+		//System.out.println("Arra: "+n);
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Array Length: " + arr.length);
-		System.out.println("Player Please guess your number");
+		//System.out.println("Array Length: " + arr.length);
+		System.out.println("\nPlayer Please guess your number");
 		for (i = r; i < arr.length; i++) {
 			
 			double num = sc.nextDouble();
 
 			if (num % 1 != 0) {
-				System.out.println("Decimal number is not allowed. Please re-enter");
+				System.out.println("\nDecimal number is not allowed. Please re-enter");
 				r = i;
 				checkPlayersNum();
 
 			} else {
 				
-				if(num>=10 && num!=0) {
+				if(num>=11 || num==0) {
 					{
-						System.out.println("Please enter the No. between 0 to  11 only");
+						System.out.println("\nPlease enter the No. between 0 to  11 only");
 						checkPlayersNum();
 						
 					}
 				}
 					else { 
 						arr[i] = (int) num;
-						System.out.println("Next Please Guess Number  ");
+						System.out.println("\nNext Please Guess Number  ");
 
 				}
 				
@@ -112,7 +112,7 @@ class PlayersGuessNum {
 	
 		
 		//int []show=checkPlayersNum();
-		System.out.println("------------- Printing Array =1 --------------------");
+		System.out.println("------------- Player Input =1 --------------------");
 		for (int j = 0; j <showNum.length; j++) {
 			
 			System.out.println("Player input at: [" + j + "] = " +showNum[j] );	
@@ -130,7 +130,7 @@ class UmpireTask{
 		
 		//int count=0;
 		int j=playersNums.length;
-		System.out.println("in umpire Decision value of ply length is: "+playersNums.length );
+		//System.out.println("in umpire Decision value of ply length is: "+playersNums.length );
 		int [] winner = new int[j];
 		for(int i=0;i<playersNums.length;i++) {
 			 		 
@@ -139,30 +139,30 @@ class UmpireTask{
 				winner[i]=i+1;
 				count++;
 				//count=winner.length;
-				System.out.println("Length in decision " +winner.length);
+				//System.out.println("Length in decision " +winner.length);
 				//return winner;
 				rest=count;
 								
 			}
 		}
-		System.out.println("Length in decision is " +winner.length);
+		//System.out.println("Length in decision is " +winner.length);
 		return winner;
 	}	
 	
 	
 	public void showResult(int []result) {
 		
-		System.out.println("Check aaray: "+result.length+ " and Check Count: "+count);
+		//System.out.println("Check aaray: "+result.length+ " and Check Count: "+count);
 		
           if (result.length==count) {
 				
-				System.out.println("Match has been tied All guess the correct  number ");
+				System.out.println("\nMatch has been tied All guess the correct  number ");
 				System.exit(0); // are you want to play again
 							
 			}
 			else if(count==0) {
 				
-				System.out.println("No one Won the match");
+				System.out.println("\nNo one could  Won the match");
 			}else {
 				for (int j = 0; j <result.length; j++) { 
 					if(result[j]==0) {
@@ -179,37 +179,51 @@ class UmpireTask{
 			//System.out.println("Players: "+playersNums[i]+ " guesserKey " +guesserKey);		
 }			
 		
- 
+class ReExecute {
 
-class TestGame {
+    public void playAgain() {
+
+    	System.out.println("\nDo you want play again: (Yes/No)");
+        Scanner str = new Scanner(System.in);
+        String status = str.nextLine();
+        if (status.equals("yes") || status.equals("YES")) {
+        	
+        	 TestGame.main(null);
+        }
+            
+        else if (status.equals("no") || status.equals("NO")) {
+        	System.out.println("Thank you for playing fiar");
+        	 System.exit(0);
+        	
+        }
+         
+    }
+}
+class TestGame { 
 
 	public static void main(String[] args) {
 		
-	
-	//	System.out.println("To Start the Game, Please first enter the number of participants");
-		//TotalPlayer tp= new TotalPlayer();
-		//int k=tp.countParticipants();
-	
-		System.out.println("To Start the Game, Guesser Please Gues Any Integer Number First");
+		System.out.println("\nTo Start the Game, Guesser Please Gues Any Integer Number First");
 		
 		GuesserNumber guesserNum=new GuesserNumber();
 		int guesserKey=(int)guesserNum.guesserKeyNum();
-		System.out.println("Gueser Key is: "+guesserKey);
-		System.out.println("Please confirm no. of prticipants");
+		System.out.println("\nGueser Key is: "+guesserKey);
+		System.out.println("\nNow Please Enter the no. of prticipants");
 		
 		
 		PlayersGuessNum playNum = new PlayersGuessNum();
 		
 		int []show=playNum.checkPlayersNum();
 		
-			
 		playNum.printPlayArray(show);
 		//Umpire Task
 				
 		UmpireTask utask=new UmpireTask();
 		int []checkResult= utask.umpireDecision(show,guesserKey );
-		   
-		   utask.showResult(checkResult);
+		  utask.showResult(checkResult);
+		  //Play Again
+		  ReExecute rs=new ReExecute();
+		  rs.playAgain();
 				
 	}
 }
