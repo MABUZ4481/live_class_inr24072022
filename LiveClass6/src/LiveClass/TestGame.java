@@ -152,7 +152,7 @@ class UmpireTask{
         if (result.length==count) {
 				
 				System.out.println("\nMatch has been tied All guess the correct  number ");
-				System.exit(0); // are you want to play again
+				//System.exit(0); // are you want to play again
 							
 			}
 			else if(count==0) {
