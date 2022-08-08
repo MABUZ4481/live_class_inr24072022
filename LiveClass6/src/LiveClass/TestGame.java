@@ -75,7 +75,7 @@ class PlayersGuessNum {
 	//	System.out.println("\nPlayer Please guess your number");
 		for (i = r; i < playersNum.length; i++) {
 			
-			System.out.println("\nPlayer number: "+(i+1)+ ", Please guess your number" );
+			System.out.println("\nPlayer number- "+(i+1)+ " :, Please guess your number" );
 			
 			double num = sc.nextDouble();
 
@@ -164,7 +164,7 @@ class UmpireTask{
 						continue;
 					}
 					else {
-				System.out.println("\n Player no.-:"+result[j]+ "  "+"has won the match" );
+				System.out.println("\n Player number- "+result[j]+ "  "+"has won the match" );
 				}
 				}
 			}
@@ -177,7 +177,7 @@ class ReExecute {
 
   public void playAgain() {
 
-  	System.out.println("\nDo you want play again: (Yes/No)");
+  	System.out.println("\nDo you want to play again: (Yes/No)");
       Scanner str = new Scanner(System.in);
       String status = str.nextLine();
       if (status.equals("yes") || status.equals("YES")) {
